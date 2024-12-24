@@ -35,14 +35,20 @@ namespace SzakDolgozat.Api.Controllers
                 return BadRequest(ModelState);
             }
 
-            var user = new User { UserName = model.Username, Email = model.Email, Role = 2 }; // 2 as default role for regular user
+            var user = new User
+            {
+                UserName = model.Username,
+                Email = model.Email,
+                Role = (int)UserRole.Reader  // Alapértelmezetten Reader szerepkör
+            };
+
             var result = await _userManager.CreateAsync(user, model.Password);
 
             if (result.Succeeded)
             {
                 await _signInManager.SignInAsync(user, isPersistent: false);
                 var token = GenerateJwtToken(user);
-                return Ok(new { token, message = "Sikeres regisztráció!" });
+                return Ok(new { token, role = user.Role, message = "Sikeres regisztráció!" });
             }
 
             foreach (var error in result.Errors)
@@ -74,7 +80,7 @@ namespace SzakDolgozat.Api.Controllers
                 if (result.Succeeded)
                 {
                     var token = GenerateJwtToken(user);
-                    return Ok(new { token, message = "Login successful" });
+                    return Ok(new { token, role = user.Role, message = "Login successful" });
                 }
 
                 return Unauthorized(new { message = "Invalid username or password" });
@@ -88,12 +94,12 @@ namespace SzakDolgozat.Api.Controllers
         private string GenerateJwtToken(User user)
         {
             var claims = new List<Claim>
-            {
-                new Claim(ClaimTypes.NameIdentifier, user.Id),
-                new Claim(ClaimTypes.Name, user.UserName),
-                new Claim(ClaimTypes.Email, user.Email),
-                new Claim(ClaimTypes.Role, user.Role.ToString())
-            };
+    {
+        new Claim(ClaimTypes.NameIdentifier, user.Id),
+        new Claim(ClaimTypes.Name, user.UserName),
+        new Claim(ClaimTypes.Email, user.Email),
+        new Claim(ClaimTypes.Role, user.Role.ToString())
+    };
 
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:Key"]));
             var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);

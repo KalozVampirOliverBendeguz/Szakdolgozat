@@ -13,7 +13,7 @@ import { CommonModule } from '@angular/common';
       <h2>Register</h2>
       <form (ngSubmit)="onSubmit()">
         <div>
-          <label for="username">Username:</label>
+          <label for="username">Felhasználónév:</label>
           <input type="text" id="username" [(ngModel)]="username" name="username" required>
         </div>
         <div>
@@ -21,16 +21,16 @@ import { CommonModule } from '@angular/common';
           <input type="email" id="email" [(ngModel)]="email" name="email" required>
         </div>
         <div>
-          <label for="password">Password:</label>
+          <label for="password">Jelszó:</label>
           <input type="password" id="password" [(ngModel)]="password" name="password" required>
         </div>
         <div>
-          <label for="confirmPassword">Confirm Password:</label>
+          <label for="confirmPassword">Jelszó újra:</label>
           <input type="password" id="confirmPassword" [(ngModel)]="confirmPassword" name="confirmPassword" required>
         </div>
-        <button type="submit">Register</button>
+        <button type="submit">Regisztráció</button>
       </form>
-      <p>Already have an account? <a routerLink="/login">Login here</a></p>
+      <p>Már van profilod? <a routerLink="/login">Bejelentkezés</a></p>
     </div>
   `,
   styles: [`

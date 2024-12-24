@@ -13,5 +13,13 @@ namespace SzakDolgozat.Api.Models
 
         [StringLength(100)]
         public string? LastName { get; set; }
+
+        public virtual ICollection<ProjectUser> ProjectUsers { get; set; }
     }
+}
+public enum UserRole
+{
+    Admin = 1,
+    Developer = 2,
+    Reader = 3
 }

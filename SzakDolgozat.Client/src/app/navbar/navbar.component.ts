@@ -12,12 +12,8 @@ import { MatIconModule } from '@angular/material/icon';
   imports: [RouterModule, CommonModule, MatToolbarModule, MatButtonModule, MatIconModule],
   template: `
     <mat-toolbar color="primary" *ngIf="authService.isLoggedIn()">
-      <span>SzakDolgozat</span>
+      <span>P r e s s</span>
       <span class="spacer"></span>
-      <button mat-button routerLink="/home">
-        <mat-icon>home</mat-icon>
-        Home
-      </button>
       <button mat-button routerLink="/projects">
         <mat-icon>work</mat-icon>
         Projects

@@ -1,5 +1,4 @@
-﻿// Models/Project.cs
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace SzakDolgozat.Api.Models
@@ -28,9 +27,18 @@ namespace SzakDolgozat.Api.Models
         [StringLength(500)]
         public string? Description { get; set; }
 
+        public string? Repository { get; set; }
+
         public string? UserId { get; set; }
+
+        public string? CreatedById { get; set; }
 
         [ForeignKey("UserId")]
         public User? User { get; set; }
+
+        [ForeignKey("CreatedById")]
+        public User? CreatedBy { get; set; }
+
+        public virtual ICollection<ProjectUser> ProjectUsers { get; set; }
     }
 }

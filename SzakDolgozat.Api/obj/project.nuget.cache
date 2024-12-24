@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "8yeegNthjdE=",
+  "dgSpecHash": "phJzzBFQZSU=",
   "success": true,
   "projectFilePath": "C:\\Users\\tothb\\source\\repos\\SzakDolgozat.API\\SzakDolgozat.Api\\SzakDolgozat.Api.csproj",
   "expectedPackageFiles": [
@@ -8,6 +8,7 @@
     "C:\\Users\\tothb\\.nuget\\packages\\azure.identity\\1.10.3\\azure.identity.1.10.3.nupkg.sha512",
     "C:\\Users\\tothb\\.nuget\\packages\\bcrypt.net-next\\4.0.3\\bcrypt.net-next.4.0.3.nupkg.sha512",
     "C:\\Users\\tothb\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
+    "C:\\Users\\tothb\\.nuget\\packages\\jwt-decode\\2.2.0\\jwt-decode.2.2.0.nupkg.sha512",
     "C:\\Users\\tothb\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\8.0.10\\microsoft.aspnetcore.authentication.jwtbearer.8.0.10.nupkg.sha512",
     "C:\\Users\\tothb\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\8.0.10\\microsoft.aspnetcore.cryptography.internal.8.0.10.nupkg.sha512",
     "C:\\Users\\tothb\\.nuget\\packages\\microsoft.aspnetcore.cryptography.keyderivation\\8.0.10\\microsoft.aspnetcore.cryptography.keyderivation.8.0.10.nupkg.sha512",

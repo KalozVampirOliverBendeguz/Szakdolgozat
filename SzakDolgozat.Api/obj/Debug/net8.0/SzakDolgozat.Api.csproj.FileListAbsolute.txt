@@ -149,3 +149,4 @@ C:\Users\tothb\source\repos\SzakDolgozat.API\SzakDolgozat.Api\bin\Debug\net8.0\r
 C:\Users\tothb\source\repos\SzakDolgozat.API\SzakDolgozat.Api\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Windows.Extensions.dll
 C:\Users\tothb\source\repos\SzakDolgozat.API\SzakDolgozat.Api\bin\Debug\net8.0\Microsoft.Extensions.Configuration.FileExtensions.dll
 C:\Users\tothb\source\repos\SzakDolgozat.API\SzakDolgozat.Api\bin\Debug\net8.0\Microsoft.Extensions.Configuration.Json.dll
+C:\Users\tothb\source\repos\SzakDolgozat.API\SzakDolgozat.Api\obj\Debug\net8.0\SzakDolgozat.Api.sourcelink.json

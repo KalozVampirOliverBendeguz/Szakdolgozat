@@ -16,7 +16,8 @@
           "Microsoft.EntityFrameworkCore.SqlServer": "8.0.10",
           "Microsoft.EntityFrameworkCore.Tools": "8.0.10",
           "Microsoft.Extensions.Configuration.Json": "8.0.1",
-          "Swashbuckle.AspNetCore": "6.9.0"
+          "Swashbuckle.AspNetCore": "6.9.0",
+          "jwt-decode": "2.2.0"
         },
         "runtime": {
           "SzakDolgozat.Api.dll": {}
@@ -72,6 +73,7 @@
           }
         }
       },
+      "jwt-decode/2.2.0": {},
       "Microsoft.AspNetCore.Authentication.JwtBearer/8.0.10": {
         "dependencies": {
           "Microsoft.IdentityModel.Protocols.OpenIdConnect": "7.1.2"
@@ -1081,6 +1083,13 @@
       "sha512": "sha512-lQKvtaTDOXnoVJ20ibTuSIOf2i0uO0MPbDhd1jm238I+U/2ZnRENj0cktKZhtchBMtCUSRQ5v4xBCUbKNmyVMw==",
       "path": "humanizer.core/2.14.1",
       "hashPath": "humanizer.core.2.14.1.nupkg.sha512"
+    },
+    "jwt-decode/2.2.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-xpbXeWL0wXe2a8ef1zt9WFXSdp8UCCKQIdt6yjgE6xV1s/ujNCctWEIQV1S5/4SpNvjl8Ae1fITMHV9UvT3xIA==",
+      "path": "jwt-decode/2.2.0",
+      "hashPath": "jwt-decode.2.2.0.nupkg.sha512"
     },
     "Microsoft.AspNetCore.Authentication.JwtBearer/8.0.10": {
       "type": "package",

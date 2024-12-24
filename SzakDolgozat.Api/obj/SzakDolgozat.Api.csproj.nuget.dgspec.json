@@ -89,6 +89,10 @@
             "Swashbuckle.AspNetCore": {
               "target": "Package",
               "version": "[6.9.0, )"
+            },
+            "jwt-decode": {
+              "target": "Package",
+              "version": "[2.2.0, )"
             }
           },
           "imports": [

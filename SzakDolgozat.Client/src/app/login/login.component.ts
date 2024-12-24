@@ -22,30 +22,30 @@ import { MatButtonModule } from '@angular/material/button';
   ],
   template: `
     <div class="login-container">
-      <mat-card>
-        <mat-card-header>
-          <mat-card-title>Login</mat-card-title>
-        </mat-card-header>
-        <mat-card-content>
-          <form (ngSubmit)="onSubmit()">
-            <mat-form-field appearance="fill">
-              <mat-label>Username</mat-label>
-              <input matInput [(ngModel)]="username" name="username" required>
-            </mat-form-field>
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>Bejelentkezés</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <form (ngSubmit)="onSubmit()">
+          <mat-form-field appearance="fill">
+            <mat-label>Felhasználónév</mat-label>
+            <input matInput [(ngModel)]="username" name="username" required>
+          </mat-form-field>
 
-            <mat-form-field appearance="fill">
-              <mat-label>Password</mat-label>
-              <input matInput type="password" [(ngModel)]="password" name="password" required>
-            </mat-form-field>
+          <mat-form-field appearance="fill">
+            <mat-label>Jelszó</mat-label>
+            <input matInput type="password" [(ngModel)]="password" name="password" required>
+          </mat-form-field>
 
-            <button mat-raised-button color="primary" type="submit">Login</button>
-            <p class="register-link">
-              Don't have an account? <a routerLink="/register">Register here</a>
-            </p>
-          </form>
-        </mat-card-content>
-      </mat-card>
-    </div>
+          <button mat-raised-button color="primary" type="submit">Bejelentkezés</button>
+          <p class="register-link">
+            Nincs még fiókod? <a routerLink="/register">Regisztrálj itt</a>
+          </p>
+        </form>
+      </mat-card-content>
+    </mat-card>
+  </div>
   `,
   styles: [`
     .login-container {
@@ -91,18 +91,11 @@ export class LoginComponent {
   ) { }
 
   onSubmit() {
-    console.log('Login attempt with:', this.username, this.password);
     this.authService.login(this.username, this.password).subscribe({
       next: (response) => {
-        console.log('Login successful:', response);
         if (response && response.token) {
           localStorage.setItem('token', response.token);
-          this.router.navigate(['/home']).then(() => {
-            console.log('Navigation complete');
-            window.location.reload(); // Ha szükséges
-          }).catch(err => {
-            console.error('Navigation error:', err);
-          });
+          this.router.navigate(['/projects']);
         }
       },
       error: (error) => {

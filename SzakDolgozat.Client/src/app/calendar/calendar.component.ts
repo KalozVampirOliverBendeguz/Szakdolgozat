@@ -29,7 +29,7 @@ interface CalendarEvent extends EventInput {
     <div class="calendar-container">
       <mat-card>
         <mat-card-header>
-          <mat-card-title>Project Calendar</mat-card-title>
+          <mat-card-title>Naptár</mat-card-title>
         </mat-card-header>
         <mat-card-content>
           <full-calendar [options]="calendarOptions"></full-calendar>
@@ -41,24 +41,20 @@ interface CalendarEvent extends EventInput {
     .calendar-container {
       padding: 20px;
     }
-
-    ::ng-deep .fc {
-      max-width: 1100px;
-      margin: 0 auto;
+    ::ng-deep .fc-event {
+      cursor: pointer;
+      padding: 2px 5px;
     }
-
-    ::ng-deep .fc-toolbar-title {
-      font-size: 1.5em !important;
-    }
-
     ::ng-deep .fc-event.active-project {
       background-color: #4CAF50;
       border-color: #388E3C;
     }
-
     ::ng-deep .fc-event.inactive-project {
       background-color: #9E9E9E;
       border-color: #757575;
+    }
+    ::ng-deep .fc-event-title {
+      font-weight: normal;
     }
   `]
 })
@@ -72,6 +68,12 @@ export class CalendarComponent implements OnInit {
       right: 'dayGridMonth,dayGridWeek,dayGridDay'
     },
     events: [],
+    eventDisplay: 'block',
+    eventContent: (arg) => {
+      return {
+        html: `<div class="event-content">${arg.event.title}</div>`
+      }
+    },
     eventClassNames: (arg) => {
       return arg.event.extendedProps?.['isActive'] ? ['active-project'] : ['inactive-project'];
     }
