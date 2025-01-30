@@ -149,6 +149,50 @@ namespace SzakDolgozat.Api.Controllers
             }
         }
 
+
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteUser(string id)
+        {
+            try
+            {
+                var user = await _userManager.FindByIdAsync(id);
+                if (user == null)
+                {
+                    return NotFound();
+                }
+
+                // Ellenőrizzük, hogy nem az utolsó admin-e
+                if (user.Role == (int)UserRole.Admin)
+                {
+                    var adminCount = await _userManager.Users
+                        .CountAsync(u => u.Role == (int)UserRole.Admin);
+
+                    if (adminCount <= 1)
+                    {
+                        return BadRequest(new { message = "Cannot delete the last admin user" });
+                    }
+                }
+
+                var result = await _userManager.DeleteAsync(user);
+                if (!result.Succeeded)
+                {
+                    return BadRequest(new { message = "Failed to delete user" });
+                }
+
+                return NoContent();
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error deleting user");
+                return StatusCode(500, new { message = "Internal server error" });
+            }
+        }
+
+
+
+
+
         private async Task UpdateUserIdentityRole(User user, UserRole newRole)
         {
             var currentRoles = await _userManager.GetRolesAsync(user);

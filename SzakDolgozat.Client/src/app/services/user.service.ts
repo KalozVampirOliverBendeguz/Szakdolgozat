@@ -53,4 +53,8 @@ export class UserService {
       catchError(error => throwError(() => error))
     );
   }
+
+  deleteUser(userId: string): Observable<void> {
+    return this.http.delete<void>(`${this.apiUrl}/${userId}`);
+  }
 }

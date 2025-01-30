@@ -10,6 +10,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { UserService, User } from '../../services/user.service';
 import { UserRole } from '../../auth.service';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 @Component({
   selector: 'app-user-management',
@@ -22,7 +23,9 @@ import { UserRole } from '../../auth.service';
     MatInputModule,
     MatSelectModule,
     MatButtonModule,
-    MatIconModule
+    MatIconModule,
+    MatSnackBarModule,
+    MatTooltipModule
   ],
   template: `
     <div class="user-management-container">
@@ -71,6 +74,19 @@ import { UserRole } from '../../auth.service';
           </td>
         </ng-container>
 
+        <!-- Actions Column -->
+        <ng-container matColumnDef="actions">
+          <th mat-header-cell *matHeaderCellDef> Actions </th>
+          <td mat-cell *matCellDef="let user">
+            <button mat-icon-button color="warn" 
+                    (click)="deleteUser(user)"
+                    *ngIf="canDeleteUser(user)"
+                    matTooltip="Delete User">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </td>
+        </ng-container>
+
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
       </table>
@@ -95,32 +111,66 @@ import { UserRole } from '../../auth.service';
     table {
       width: 100%;
     }
+
+    .mat-column-actions {
+      width: 80px;
+      text-align: center;
+    }
   `]
 })
 export class UserManagementComponent implements OnInit {
   users: User[] = [];
-  displayedColumns: string[] = ['userName', 'email', 'role'];
+  displayedColumns: string[] = ['userName', 'email', 'role', 'actions'];
   selectedRole: UserRole | null = null;
   UserRole = UserRole;
+  private adminCount = 0;
 
   constructor(
     private userService: UserService,
     private snackBar: MatSnackBar
   ) { }
 
-
-
-
   ngOnInit() {
-    console.log('UserManagement initialized'); // Debug log
     this.loadUsers();
+    this.updateAdminCount();
+  }
+
+  updateAdminCount() {
+    this.userService.filterByRole(UserRole.Admin).subscribe({
+      next: (users) => {
+        this.adminCount = users.length;
+      },
+      error: (error) => console.error('Error counting admins:', error)
+    });
+  }
+
+  canDeleteUser(user: User): boolean {
+    return user.role !== UserRole.Admin || this.adminCount > 1;
+  }
+
+  deleteUser(user: User) {
+    if (confirm(`Are you sure you want to delete user ${user.userName}?`)) {
+      this.userService.deleteUser(user.id).subscribe({
+        next: () => {
+          this.snackBar.open('User deleted successfully', 'Close', { duration: 3000 });
+          this.loadUsers();
+          if (user.role === UserRole.Admin) {
+            this.updateAdminCount();
+          }
+        },
+        error: (error) => {
+          console.error('Error deleting user:', error);
+          this.snackBar.open(error.error?.message || 'Error deleting user', 'Close', {
+            duration: 3000
+          });
+        }
+      });
+    }
   }
 
   loadUsers() {
-    console.log('Loading users...'); // Debug log
     this.userService.getUsers().subscribe({
       next: (users) => {
-        console.log('Users loaded:', users); // Debug log
         this.users = users;
       },
       error: (error) => {
@@ -156,10 +206,14 @@ export class UserManagementComponent implements OnInit {
   updateUserRole(user: User) {
     this.userService.updateUserRole(user.id, user.role).subscribe({
       next: () => {
-        console.log('User role updated successfully');
+        this.snackBar.open('User role updated successfully', 'Close', { duration: 3000 });
         this.loadUsers();
+        this.updateAdminCount();
       },
-      error: (error) => console.error('Error updating user role:', error)
+      error: (error) => {
+        console.error('Error updating user role:', error);
+        this.snackBar.open('Error updating user role', 'Close', { duration: 3000 });
+      }
     });
   }
 }

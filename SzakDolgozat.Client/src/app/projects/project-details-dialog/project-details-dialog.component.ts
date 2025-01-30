@@ -15,6 +15,10 @@ import { MatSelectModule } from '@angular/material/select';
 import { UserService, User } from '../../services/user.service';
 import { ProjectReport, ProjectReportService } from '../../services/project-report.service';
 import { MatExpansionModule } from '@angular/material/expansion';
+import { MatListModule } from '@angular/material/list';
+import { ProjectDocumentService, ProjectDocument } from '../../services/project-document.service';
+import { MatTooltipModule } from '@angular/material/tooltip';
+
 
 @Component({
   selector: 'app-project-details-dialog',
@@ -31,7 +35,9 @@ import { MatExpansionModule } from '@angular/material/expansion';
     MatNativeDateModule,
     MatChipsModule,
     MatSelectModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatListModule,
+    MatTooltipModule 
   ],
   template: `
    <div class="dialog-container">
@@ -157,16 +163,64 @@ import { MatExpansionModule } from '@angular/material/expansion';
            </div>
          </div>
 
-         <div class="documentation-section">
-           <h3>Project Documentation</h3>
-           <button mat-stroked-button color="primary" class="upload-button" [disabled]="!canEdit">
-             <mat-icon>upload_file</mat-icon>
-             Upload Documentation
-           </button>
-           <p class="documentation-note">No documentation uploaded yet</p>
-         </div>
-       </div>
-     </mat-dialog-content>
+<div class="documentation-section">
+  <h3>Project Documentation</h3>
+  <div class="upload-section" *ngIf="canEdit">
+    <input
+      type="file"
+      #fileInput
+      style="display: none"
+      (change)="onFileSelected($event)"
+    >
+    <button
+      mat-stroked-button
+      color="primary"
+      (click)="fileInput.click()"
+      [disabled]="!canEdit"
+      class="upload-button"
+    >
+      <mat-icon>upload_file</mat-icon>
+      Upload Documentation
+    </button>
+  </div>
+
+  <mat-expansion-panel class="documents-panel">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Uploaded Documents ({{documents.length}})
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+
+    <div *ngIf="documents.length > 0">
+      <mat-list>
+        <mat-list-item *ngFor="let doc of documents" class="document-item">
+          <mat-icon matListItemIcon>insert_drive_file</mat-icon>
+          <div matListItemTitle>{{doc.fileName}}</div>
+          <div matListItemLine>
+            Uploaded by: {{doc.createdBy?.userName}} |
+            {{doc.uploadedAt | date:'medium'}}
+          </div>
+          <div matListItemMeta>
+            <button mat-icon-button color="primary" (click)="downloadDocument(doc)"
+                    matTooltip="Download">
+              <mat-icon>download</mat-icon>
+            </button>
+            <button mat-icon-button color="warn" *ngIf="canEdit"
+                    (click)="deleteDocument(doc)"
+                    matTooltip="Delete">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </div>
+        </mat-list-item>
+      </mat-list>
+    </div>
+
+    <div *ngIf="documents.length === 0" class="no-documents">
+      <p>No documents uploaded yet</p>
+    </div>
+
+  </mat-expansion-panel>
+</div>
 
      <mat-dialog-actions align="end">
       <button mat-stroked-button color="primary" (click)="toggleStatus()" *ngIf="authService.isAdmin()">
@@ -283,12 +337,54 @@ import { MatExpansionModule } from '@angular/material/expansion';
      color: #666;
      margin-top: 8px;
    }
+
+   .upload-section {
+     display: flex;
+     align-items: center;
+     gap: 16px;
+     margin-bottom: 16px;
+   }
+
+   .documents-list {
+     margin-top: 16px;
+   }
+
+   mat-list-item {
+     margin-bottom: 8px;
+   }
+   .documents-panel {
+  margin-top: 16px;
+}
+
+.document-item {
+  border-bottom: 1px solid #eee;
+  margin-bottom: 8px;
+}
+
+.no-documents {
+  text-align: center;
+  color: #666;
+  padding: 16px;
+}
+
+mat-list-item {
+  height: auto !important;
+  margin: 16px 0;
+}
+
+[matListItemMeta] {
+  display: flex;
+  gap: 8px;
+}
+
+
  `]
 })
 export class ProjectDetailsDialogComponent implements OnInit {
   availableUsers: User[] = [];
   canEdit: boolean = true;
   reports: ProjectReport[] = [];
+  documents: ProjectDocument[] = [];
   newReport: Partial<ProjectReport> = {
     title: '',
     content: '',
@@ -300,20 +396,15 @@ export class ProjectDetailsDialogComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data: Project,
     private reportService: ProjectReportService,
     private userService: UserService,
-    public authService: AuthService
+    public authService: AuthService,
+    private documentService: ProjectDocumentService
   ) { }
 
   ngOnInit() {
     this.loadReports();
     this.loadUsers();
-  }
-
-  loadReports() {
     if (this.data.id) {
-      this.reportService.getProjectReports(this.data.id).subscribe({
-        next: (reports) => this.reports = reports,
-        error: (error) => console.error('Error loading reports:', error)
-      });
+      this.loadDocuments();
     }
   }
 
@@ -324,16 +415,28 @@ export class ProjectDetailsDialogComponent implements OnInit {
     });
   }
 
-  submitReport() {
-    if (!this.newReport.title || !this.newReport.content || !this.data.id) {
+  loadDocuments() {
+    const projectId = this.data.id;
+    if (projectId === undefined) {
       return;
     }
 
-    const report = {
+    this.documentService.getProjectDocuments(projectId).subscribe({
+      next: (docs: ProjectDocument[]) => this.documents = docs,
+      error: (error: Error) => console.error('Error loading documents:', error)
+    });
+  }
+  
+  submitReport() {
+    if (!this.newReport.title || !this.newReport.content || !this.data.id || !this.newReport.reportType) {
+      return;
+    }
+
+    const report: ProjectReport = {
       projectId: this.data.id,
       title: this.newReport.title,
       content: this.newReport.content,
-      reportType: 'Progress' // Fix érték egyelőre
+      reportType: this.newReport.reportType
     };
 
     this.reportService.createReport(report).subscribe({
@@ -347,12 +450,64 @@ export class ProjectDetailsDialogComponent implements OnInit {
     });
   }
 
+  loadReports() {
+    const projectId = this.data.id;
+    if (projectId === undefined) {
+      return;
+    }
+
+    this.reportService.getProjectReports(projectId).subscribe({
+      next: (reports) => this.reports = reports,
+      error: (error: Error) => console.error('Error loading reports:', error)
+    });
+  }
+
   removeUser(user: User) {
     if (this.data.assignedUsers) {
       const index = this.data.assignedUsers.indexOf(user);
       if (index >= 0) {
         this.data.assignedUsers.splice(index, 1);
       }
+    }
+  }
+
+  onFileSelected(event: any) {
+    const file = event.target.files[0];
+    if (file && this.data.id) {
+      this.documentService.uploadDocument(this.data.id, file).subscribe({
+        next: (doc) => {
+          this.documents.push(doc);
+          event.target.value = '';
+        },
+        error: (error) => console.error('Error uploading document:', error)
+      });
+    }
+  }
+
+  downloadDocument(doc: ProjectDocument) {
+    this.documentService.downloadDocument(doc.id).subscribe(blob => {
+      const url = window.URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = doc.fileName;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      window.URL.revokeObjectURL(url);
+    });
+  }
+
+  deleteDocument(doc: ProjectDocument) {
+    if (confirm('Are you sure you want to delete this document?')) {
+      this.documentService.deleteDocument(doc.id).subscribe({
+        next: () => {
+          const index = this.documents.indexOf(doc);
+          if (index > -1) {
+            this.documents.splice(index, 1);
+          }
+        },
+        error: (error) => console.error('Error deleting document:', error)
+      });
     }
   }
 

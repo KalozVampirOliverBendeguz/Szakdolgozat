@@ -17,6 +17,8 @@ namespace SzakDolgozat.Api.Data
 
         public DbSet<ProjectReport> ProjectReports { get; set; }
 
+        public DbSet<ProjectDocument> ProjectDocuments { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
