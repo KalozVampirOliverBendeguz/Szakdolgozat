@@ -179,7 +179,6 @@ export class CalendarComponent implements OnInit {
   filterEvents() {
     let filteredEvents = [...this.allEvents];
 
-    // Szűrés nézet alapján
     if (this.selectedView === 'my') {
       const currentUserId = this.authService.getCurrentUserId();
       const userProjects = this.projects.filter(p =>
@@ -192,14 +191,12 @@ export class CalendarComponent implements OnInit {
       );
     }
 
-    // Szűrés projekt alapján
     if (this.selectedProjectId) {
       filteredEvents = filteredEvents.filter(event =>
         event.extendedProps?.projectId === this.selectedProjectId
       );
     }
 
-    // Események frissítése a naptárban
     this.calendarOptions.events = filteredEvents;
   }
 }

@@ -52,21 +52,21 @@ namespace SzakDolgozat.Api.Migrations
                         new
                         {
                             Id = "8450e6c0-e5a6-41b2-8957-978998ebdaeb",
-                            ConcurrencyStamp = "9699c747-7a9b-40c6-9406-771ca151820d",
+                            ConcurrencyStamp = "157a4fb3-38b1-4632-bde4-c56dd2312835",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
                             Id = "ca1b544d-b871-4344-a8bd-d73d30a36307",
-                            ConcurrencyStamp = "89087f9b-bedd-4ea0-a743-f1d9619bc124",
+                            ConcurrencyStamp = "414fa3b0-5995-46f1-899a-7638ee4121f3",
                             Name = "Developer",
                             NormalizedName = "DEVELOPER"
                         },
                         new
                         {
                             Id = "0713ae1b-c1c4-45f5-b4f0-cbd98977ee9a",
-                            ConcurrencyStamp = "3c3ee90f-c81d-4536-95c5-a9d8fb91e5c3",
+                            ConcurrencyStamp = "8c010c1d-a274-4039-851b-699641b773e3",
                             Name = "Reader",
                             NormalizedName = "READER"
                         });
@@ -185,6 +185,88 @@ namespace SzakDolgozat.Api.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
+            modelBuilder.Entity("SzakDolgozat.Api.Models.Notification", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsRead")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Message")
+                        .IsRequired()
+                        .HasMaxLength(1000)
+                        .HasColumnType("nvarchar(1000)");
+
+                    b.Property<int?>("ProjectId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
+
+                    b.Property<string>("Type")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ProjectId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Notifications");
+                });
+
+            modelBuilder.Entity("SzakDolgozat.Api.Models.NotificationPreference", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<bool>("AlwaysNotifyOneDayBefore")
+                        .HasColumnType("bit");
+
+                    b.Property<int>("DaysBeforeDeadline")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("Enabled")
+                        .HasColumnType("bit");
+
+                    b.Property<int>("FrequencyInDays")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("OnlyActiveProjects")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("OnlyAssignedProjects")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("NotificationPreferences");
+                });
+
             modelBuilder.Entity("SzakDolgozat.Api.Models.Project", b =>
                 {
                     b.Property<int>("Id")
@@ -232,6 +314,49 @@ namespace SzakDolgozat.Api.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("Projects");
+                });
+
+            modelBuilder.Entity("SzakDolgozat.Api.Models.ProjectDocument", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("ContentType")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("CreatedById")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("FileName")
+                        .IsRequired()
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)");
+
+                    b.Property<string>("FilePath")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<long>("FileSize")
+                        .HasColumnType("bigint");
+
+                    b.Property<int>("ProjectId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("UploadedAt")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CreatedById");
+
+                    b.HasIndex("ProjectId");
+
+                    b.ToTable("ProjectDocuments");
                 });
 
             modelBuilder.Entity("SzakDolgozat.Api.Models.ProjectReport", b =>
@@ -370,16 +495,16 @@ namespace SzakDolgozat.Api.Migrations
                         {
                             Id = "1a5ef115-89dc-483c-8539-f82f89250cc3",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "04afc76a-c5ad-4ea2-b3ce-abc3ea36f35e",
+                            ConcurrencyStamp = "cf22c3ee-f002-41d5-bf87-bc271c5386c4",
                             Email = "admin@admin.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@ADMIN.COM",
                             NormalizedUserName = "ADMIN@ADMIN.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEIC2eNIkwQJug1uuBVIcvRhrKhSAcGe/dIbIK5VKQaTuDnwKy6ya6QflWO6GJ8l/Iw==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEBnSrmUg5Y5vCgjVCBeNcYTexLvkcJ0qUepS3vgCh1UPg5855Dsl1FHjJV5ntkkpfA==",
                             PhoneNumberConfirmed = false,
                             Role = 1,
-                            SecurityStamp = "78715137-f0ad-4de5-8204-19cc0ade23ff",
+                            SecurityStamp = "cba457ce-b998-43de-bf5c-61a96fe7264c",
                             TwoFactorEnabled = false,
                             UserName = "admin@admin.com"
                         });
@@ -436,6 +561,34 @@ namespace SzakDolgozat.Api.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("SzakDolgozat.Api.Models.Notification", b =>
+                {
+                    b.HasOne("SzakDolgozat.Api.Models.Project", "Project")
+                        .WithMany()
+                        .HasForeignKey("ProjectId");
+
+                    b.HasOne("SzakDolgozat.Api.Models.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Project");
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("SzakDolgozat.Api.Models.NotificationPreference", b =>
+                {
+                    b.HasOne("SzakDolgozat.Api.Models.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("SzakDolgozat.Api.Models.Project", b =>
                 {
                     b.HasOne("SzakDolgozat.Api.Models.User", "CreatedBy")
@@ -451,6 +604,23 @@ namespace SzakDolgozat.Api.Migrations
                     b.Navigation("CreatedBy");
 
                     b.Navigation("User");
+                });
+
+            modelBuilder.Entity("SzakDolgozat.Api.Models.ProjectDocument", b =>
+                {
+                    b.HasOne("SzakDolgozat.Api.Models.User", "CreatedBy")
+                        .WithMany()
+                        .HasForeignKey("CreatedById");
+
+                    b.HasOne("SzakDolgozat.Api.Models.Project", "Project")
+                        .WithMany()
+                        .HasForeignKey("ProjectId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("CreatedBy");
+
+                    b.Navigation("Project");
                 });
 
             modelBuilder.Entity("SzakDolgozat.Api.Models.ProjectReport", b =>

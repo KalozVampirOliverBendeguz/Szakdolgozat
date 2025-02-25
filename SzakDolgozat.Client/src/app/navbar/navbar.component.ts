@@ -5,11 +5,19 @@ import { AuthService } from '../auth.service';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import { NotificationDropdownComponent } from '../notifications/notification-dropdown/notification-dropdown.component';
 
 @Component({
   selector: 'app-navbar',
   standalone: true,
-  imports: [RouterModule, CommonModule, MatToolbarModule, MatButtonModule, MatIconModule],
+  imports: [
+    RouterModule,
+    CommonModule,
+    MatToolbarModule,
+    MatButtonModule,
+    MatIconModule,
+    NotificationDropdownComponent
+  ],
   template: `
     <mat-toolbar color="primary" *ngIf="authService.isLoggedIn()">
       <span>P r e s s</span>
@@ -22,6 +30,10 @@ import { MatIconModule } from '@angular/material/icon';
         <mat-icon>calendar_today</mat-icon>
         Calendar
       </button>
+      
+      <!-- Értesítési komponens -->
+      <app-notification-dropdown></app-notification-dropdown>
+      
       <button mat-button routerLink="/settings">
         <mat-icon>settings</mat-icon>
         Settings

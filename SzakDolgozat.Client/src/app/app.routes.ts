@@ -3,8 +3,9 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { HomeComponent } from './home/home.component';
 import { ProjectsComponent } from './projects/projects.component';
-import { CalendarComponent } from './calendar/calendar.component';  
+import { CalendarComponent } from './calendar/calendar.component';
 import { SettingsComponent } from './settings/settings.component';
+import { NotificationsComponent } from './notifications/notifications.component';
 import { AuthGuard } from './auth.guard';
 
 export const routes: Routes = [
@@ -13,5 +14,6 @@ export const routes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'projects', component: ProjectsComponent, canActivate: [AuthGuard] },
   { path: 'calendar', component: CalendarComponent, canActivate: [AuthGuard] },
-  { path: 'settings', component: SettingsComponent, canActivate: [AuthGuard] }
+  { path: 'settings', component: SettingsComponent, canActivate: [AuthGuard] },
+  { path: 'notifications', component: NotificationsComponent, canActivate: [AuthGuard] }
 ];

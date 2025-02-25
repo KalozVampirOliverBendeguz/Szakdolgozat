@@ -7,6 +7,9 @@ using Microsoft.AspNetCore.Identity;
 using SzakDolgozat.Api.Models;
 using System.Security.Claims;
 using SzakDolgozat.Api.Services;
+using SzakDolgozat.Api.BackgroundServices;
+using SzakDolgozat.Api.Services;
+using SzakDolgozat.Api.BackgroundServices;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -72,12 +75,23 @@ builder.Services.AddCors(options =>
     });
 });
 
-builder.Services.AddControllers();
+builder.Services.AddControllers().AddJsonOptions(options =>
+{
+    options.JsonSerializerOptions.ReferenceHandler = System.Text.Json.Serialization.ReferenceHandler.IgnoreCycles;
+});
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<DocumentService>();
 
-
+builder.Services.AddScoped<NotificationService>();
+if (builder.Environment.IsDevelopment())
+{
+    builder.Services.AddHostedService<NotificationBackgroundService>();
+}
+else
+{
+    builder.Services.AddHostedService<NotificationBackgroundService>();
+}
 
 var app = builder.Build();
 
@@ -88,8 +102,13 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseRouting();
-app.UseCors("AllowAngularOrigins");
-app.UseAuthentication();
+app.UseCors(options =>
+{
+    options.WithOrigins("http://localhost:4200")
+           .AllowAnyMethod()
+           .AllowAnyHeader()
+           .AllowCredentials();
+}); app.UseAuthentication();
 app.UseAuthorization();
 app.MapControllers();
 

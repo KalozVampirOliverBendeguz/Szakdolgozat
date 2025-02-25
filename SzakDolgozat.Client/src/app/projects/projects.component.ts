@@ -12,7 +12,7 @@ import { Project } from '../services/project.service';
 import { AuthService } from '../auth.service';
 import { MatTableModule } from '@angular/material/table';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
-import { FormsModule } from '@angular/forms';  
+import { FormsModule } from '@angular/forms';
 
 
 @Component({
@@ -20,13 +20,14 @@ import { FormsModule } from '@angular/forms';
   standalone: true,
   imports: [
     CommonModule,
-    FormsModule,  
+    FormsModule,
     MatCardModule,
     MatButtonModule,
     MatIconModule,
     MatDialogModule,
     MatTableModule,
-    MatButtonToggleModule
+    MatButtonToggleModule,
+    MatSnackBarModule
   ],
   template: `
     <div class="projects-container">
@@ -58,8 +59,8 @@ import { FormsModule } from '@angular/forms';
             <mat-card-subtitle>Projektvezető: {{project.projectManager}}</mat-card-subtitle>
           </mat-card-header>
           <mat-card-content (click)="openProjectDetails(project)">
-            <p><strong>Kezdés:</strong> {{project.startDate | date}}</p>
-            <p><strong>Tervezett befejezés:</strong> {{project.plannedEndDate | date}}</p>
+            <p><strong>Kezdés:</strong> {{project.startDate | date:'yyyy.MM.dd HH:mm'}}</p>
+            <p><strong>Tervezett befejezés:</strong> {{project.plannedEndDate | date:'yyyy.MM.dd HH:mm'}}</p>
             <p><strong>Státusz:</strong> 
               <span [class.status-active]="project.isActive" 
                     [class.status-inactive]="!project.isActive">
@@ -112,12 +113,12 @@ import { FormsModule } from '@angular/forms';
 
           <ng-container matColumnDef="startDate">
             <th mat-header-cell *matHeaderCellDef>Kezdés</th>
-            <td mat-cell *matCellDef="let project">{{project.startDate | date}}</td>
+            <td mat-cell *matCellDef="let project">{{project.startDate | date:'yyyy.MM.dd HH:mm'}}</td>
           </ng-container>
 
           <ng-container matColumnDef="plannedEndDate">
             <th mat-header-cell *matHeaderCellDef>Tervezett befejezés</th>
-            <td mat-cell *matCellDef="let project">{{project.plannedEndDate | date}}</td>
+            <td mat-cell *matCellDef="let project">{{project.plannedEndDate | date:'yyyy.MM.dd HH:mm'}}</td>
           </ng-container>
 
           <ng-container matColumnDef="status">
@@ -154,7 +155,7 @@ import { FormsModule } from '@angular/forms';
         </table>
       </div>
       
-      <ng-template #noProjects>
+      <div *ngIf="projects.length === 0">
         <mat-card>
           <mat-card-content>
             <p>Nincsenek projektek. 
@@ -162,7 +163,7 @@ import { FormsModule } from '@angular/forms';
             </p>
           </mat-card-content>
         </mat-card>
-      </ng-template>
+      </div>
     </div>
   `,
   styles: [`
@@ -226,7 +227,7 @@ export class ProjectsComponent implements OnInit {
     private dialog: MatDialog,
     private projectService: ProjectService,
     public authService: AuthService,
-    private snackBar: MatSnackBar 
+    private snackBar: MatSnackBar
   ) { }
 
   ngOnInit(): void {
@@ -245,10 +246,21 @@ export class ProjectsComponent implements OnInit {
   loadProjects(): void {
     this.projectService.getProjects().subscribe({
       next: (projects: Project[]) => {
+        console.log('Successfully loaded projects:', projects);
         this.projects = projects;
       },
-      error: (error: any) => {
+      error: (error) => {
         console.error('Error loading projects:', error);
+        if (error.status === 401) {
+          this.snackBar.open('Nincs jogosultságod a projektek megtekintéséhez', 'OK', {
+            duration: 3000
+          });
+          this.authService.logout();
+        } else {
+          this.snackBar.open('Hiba történt a projektek betöltése közben', 'OK', {
+            duration: 3000
+          });
+        }
       }
     });
   }
@@ -332,13 +344,14 @@ export class ProjectsComponent implements OnInit {
           this.loadProjects();
           this.snackBar.open('Project status updated', 'Close', { duration: 3000 });
         },
-        error: (error) => {
+        error: (error: Error) => {
           console.error('Error toggling project status:', error);
           this.snackBar.open('Error updating project status', 'Close', { duration: 3000 });
         }
       });
     }
   }
+
   deleteProject(project: Project): void {
     if (!this.authService.isAdmin()) return;
 
@@ -348,7 +361,7 @@ export class ProjectsComponent implements OnInit {
           this.loadProjects();
           this.snackBar.open('Project deleted successfully', 'Close', { duration: 3000 });
         },
-        error: (error) => {
+        error: (error: Error) => {
           console.error('Error deleting project:', error);
           this.snackBar.open('Error deleting project', 'Close', { duration: 3000 });
         }

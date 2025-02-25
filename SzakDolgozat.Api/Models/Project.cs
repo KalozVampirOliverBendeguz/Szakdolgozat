@@ -39,6 +39,6 @@ namespace SzakDolgozat.Api.Models
         [ForeignKey("CreatedById")]
         public User? CreatedBy { get; set; }
 
-        public virtual ICollection<ProjectUser> ProjectUsers { get; set; }
+        public virtual ICollection<ProjectUser> ProjectUsers { get; set; } = new List<ProjectUser>();
     }
 }

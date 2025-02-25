@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\tothb\\source\\repos\\SzakDolgozat.Api\\SzakDolgozat.Api\\SzakDolgozat.Api.csproj": {}
+    "C:\\Users\\tothb\\Source\\Repos\\Szakdolgozat\\SzakDolgozat.Api\\SzakDolgozat.Api.csproj": {}
   },
   "projects": {
-    "C:\\Users\\tothb\\source\\repos\\SzakDolgozat.Api\\SzakDolgozat.Api\\SzakDolgozat.Api.csproj": {
+    "C:\\Users\\tothb\\Source\\Repos\\Szakdolgozat\\SzakDolgozat.Api\\SzakDolgozat.Api.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\tothb\\source\\repos\\SzakDolgozat.Api\\SzakDolgozat.Api\\SzakDolgozat.Api.csproj",
+        "projectUniqueName": "C:\\Users\\tothb\\Source\\Repos\\Szakdolgozat\\SzakDolgozat.Api\\SzakDolgozat.Api.csproj",
         "projectName": "SzakDolgozat.Api",
-        "projectPath": "C:\\Users\\tothb\\source\\repos\\SzakDolgozat.Api\\SzakDolgozat.Api\\SzakDolgozat.Api.csproj",
+        "projectPath": "C:\\Users\\tothb\\Source\\Repos\\Szakdolgozat\\SzakDolgozat.Api\\SzakDolgozat.Api.csproj",
         "packagesPath": "C:\\Users\\tothb\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\tothb\\source\\repos\\SzakDolgozat.Api\\SzakDolgozat.Api\\obj\\",
+        "outputPath": "C:\\Users\\tothb\\Source\\Repos\\Szakdolgozat\\SzakDolgozat.Api\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

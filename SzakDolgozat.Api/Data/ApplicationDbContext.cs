@@ -19,6 +19,8 @@ namespace SzakDolgozat.Api.Data
 
         public DbSet<ProjectDocument> ProjectDocuments { get; set; }
 
+        public DbSet<Notification> Notifications { get; set; }
+        public DbSet<NotificationPreference> NotificationPreferences { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
@@ -41,6 +43,19 @@ namespace SzakDolgozat.Api.Data
                 .HasOne(pr => pr.Project)
                 .WithMany()
                 .HasForeignKey(pr => pr.ProjectId)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            modelBuilder.Entity<Notification>()
+                .HasOne(n => n.User)
+                .WithMany()
+                .HasForeignKey(n => n.UserId)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            // Értesítési beállítások entitás kapcsolat
+            modelBuilder.Entity<NotificationPreference>()
+                .HasOne(np => np.User)
+                .WithMany()
+                .HasForeignKey(np => np.UserId)
                 .OnDelete(DeleteBehavior.Cascade);
 
 
@@ -111,6 +126,9 @@ namespace SzakDolgozat.Api.Data
                     UserId = adminId
                 }
             );
+
+
+
         }
     }
 }

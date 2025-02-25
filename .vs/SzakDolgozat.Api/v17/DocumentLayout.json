@@ -1,54 +1,62 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\tothb\\source\\repos\\SzakDolgozat.Api\\",
+  "WorkspaceRootPath": "C:\\Users\\tothb\\source\\repos\\Szakdolgozat\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{8C23CF72-A0F1-49D7-8476-70A371C60360}|C:\\Users\\tothb\\source\\repos\\SzakDolgozat.Api\\SzakDolgozat.Client|c:\\users\\tothb\\source\\repos\\szakdolgozat.api\\szakdolgozat.client\\src\\app\\calendar\\calendar.component.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
-      "RelativeMoniker": "D:0:0:{8C23CF72-A0F1-49D7-8476-70A371C60360}|C:\\Users\\tothb\\source\\repos\\SzakDolgozat.Api\\SzakDolgozat.Client|solutionrelative:szakdolgozat.client\\src\\app\\calendar\\calendar.component.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
+      "AbsoluteMoniker": "D:0:0:{DD43AB23-5E82-4C24-8E17-2EFA92467598}|SzakDolgozat.Api\\SzakDolgozat.Api.csproj|c:\\users\\tothb\\source\\repos\\szakdolgozat\\szakdolgozat.api\\models\\notification.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DD43AB23-5E82-4C24-8E17-2EFA92467598}|SzakDolgozat.Api\\SzakDolgozat.Api.csproj|solutionrelative:szakdolgozat.api\\models\\notification.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{8C23CF72-A0F1-49D7-8476-70A371C60360}|C:\\Users\\tothb\\source\\repos\\SzakDolgozat.Api\\SzakDolgozat.Client|c:\\users\\tothb\\source\\repos\\szakdolgozat.api\\szakdolgozat.client\\src\\app\\settings\\user-management\\user-management.component.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
-      "RelativeMoniker": "D:0:0:{8C23CF72-A0F1-49D7-8476-70A371C60360}|C:\\Users\\tothb\\source\\repos\\SzakDolgozat.Api\\SzakDolgozat.Client|solutionrelative:szakdolgozat.client\\src\\app\\settings\\user-management\\user-management.component.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
+      "AbsoluteMoniker": "D:0:0:{DD43AB23-5E82-4C24-8E17-2EFA92467598}|SzakDolgozat.Api\\SzakDolgozat.Api.csproj|c:\\users\\tothb\\source\\repos\\szakdolgozat\\szakdolgozat.api\\controllers\\notificationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DD43AB23-5E82-4C24-8E17-2EFA92467598}|SzakDolgozat.Api\\SzakDolgozat.Api.csproj|solutionrelative:szakdolgozat.api\\controllers\\notificationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{DD43AB23-5E82-4C24-8E17-2EFA92467598}|SzakDolgozat.Api\\SzakDolgozat.Api.csproj|c:\\users\\tothb\\source\\repos\\szakdolgozat.api\\szakdolgozat.api\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DD43AB23-5E82-4C24-8E17-2EFA92467598}|SzakDolgozat.Api\\SzakDolgozat.Api.csproj|solutionrelative:szakdolgozat.api\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8C23CF72-A0F1-49D7-8476-70A371C60360}|C:\\Users\\tothb\\source\\repos\\SzakDolgozat.Api\\SzakDolgozat.Client|c:\\users\\tothb\\source\\repos\\szakdolgozat.api\\szakdolgozat.client\\src\\app\\services\\user.service.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
-      "RelativeMoniker": "D:0:0:{8C23CF72-A0F1-49D7-8476-70A371C60360}|C:\\Users\\tothb\\source\\repos\\SzakDolgozat.Api\\SzakDolgozat.Client|solutionrelative:szakdolgozat.client\\src\\app\\services\\user.service.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8C23CF72-A0F1-49D7-8476-70A371C60360}|C:\\Users\\tothb\\source\\repos\\SzakDolgozat.Api\\SzakDolgozat.Client|c:\\users\\tothb\\source\\repos\\szakdolgozat.api\\szakdolgozat.client\\src\\app\\projects\\project-details-dialog\\project-details-dialog.component.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
-      "RelativeMoniker": "D:0:0:{8C23CF72-A0F1-49D7-8476-70A371C60360}|C:\\Users\\tothb\\source\\repos\\SzakDolgozat.Api\\SzakDolgozat.Client|solutionrelative:szakdolgozat.client\\src\\app\\projects\\project-details-dialog\\project-details-dialog.component.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8C23CF72-A0F1-49D7-8476-70A371C60360}|C:\\Users\\tothb\\source\\repos\\SzakDolgozat.Api\\SzakDolgozat.Client|c:\\users\\tothb\\source\\repos\\szakdolgozat.api\\szakdolgozat.client\\src\\app\\services\\project-document.service.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
-      "RelativeMoniker": "D:0:0:{8C23CF72-A0F1-49D7-8476-70A371C60360}|C:\\Users\\tothb\\source\\repos\\SzakDolgozat.Api\\SzakDolgozat.Client|solutionrelative:szakdolgozat.client\\src\\app\\services\\project-document.service.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{DD43AB23-5E82-4C24-8E17-2EFA92467598}|SzakDolgozat.Api\\SzakDolgozat.Api.csproj|c:\\users\\tothb\\source\\repos\\szakdolgozat.api\\szakdolgozat.api\\data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{DD43AB23-5E82-4C24-8E17-2EFA92467598}|SzakDolgozat.Api\\SzakDolgozat.Api.csproj|c:\\users\\tothb\\source\\repos\\szakdolgozat\\szakdolgozat.api\\data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{DD43AB23-5E82-4C24-8E17-2EFA92467598}|SzakDolgozat.Api\\SzakDolgozat.Api.csproj|solutionrelative:szakdolgozat.api\\data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{8C23CF72-A0F1-49D7-8476-70A371C60360}|C:\\Users\\tothb\\source\\repos\\SzakDolgozat.Api\\SzakDolgozat.Client|C:\\Users\\tothb\\source\\repos\\SzakDolgozat.Api\\SzakDolgozat.Client\\node_modules\\@schematics\\angular\\application\\files\\standalone-files\\src\\app\\app.config.ts.template||{8B382828-6202-11D1-8870-0000F87579D2}",
-      "RelativeMoniker": "D:0:0:{8C23CF72-A0F1-49D7-8476-70A371C60360}|C:\\Users\\tothb\\source\\repos\\SzakDolgozat.Api\\SzakDolgozat.Client|solutionrelative:SzakDolgozat.Client\\node_modules\\@schematics\\angular\\application\\files\\standalone-files\\src\\app\\app.config.ts.template||{8B382828-6202-11D1-8870-0000F87579D2}"
+      "AbsoluteMoniker": "D:0:0:{DD43AB23-5E82-4C24-8E17-2EFA92467598}|SzakDolgozat.Api\\SzakDolgozat.Api.csproj|c:\\users\\tothb\\source\\repos\\szakdolgozat\\szakdolgozat.api\\services\\notificationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DD43AB23-5E82-4C24-8E17-2EFA92467598}|SzakDolgozat.Api\\SzakDolgozat.Api.csproj|solutionrelative:szakdolgozat.api\\services\\notificationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{8C23CF72-A0F1-49D7-8476-70A371C60360}|C:\\Users\\tothb\\source\\repos\\SzakDolgozat.Api\\SzakDolgozat.Client|C:\\Users\\tothb\\source\\repos\\SzakDolgozat.Api\\SzakDolgozat.Client\\src\\app\\services\\project-report.service.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
-      "RelativeMoniker": "D:0:0:{8C23CF72-A0F1-49D7-8476-70A371C60360}|C:\\Users\\tothb\\source\\repos\\SzakDolgozat.Api\\SzakDolgozat.Client|solutionrelative:SzakDolgozat.Client\\src\\app\\services\\project-report.service.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
+      "AbsoluteMoniker": "D:0:0:{DD43AB23-5E82-4C24-8E17-2EFA92467598}|SzakDolgozat.Api\\SzakDolgozat.Api.csproj|c:\\users\\tothb\\source\\repos\\szakdolgozat\\szakdolgozat.api\\backgroundservices\\notificationbackgroundservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DD43AB23-5E82-4C24-8E17-2EFA92467598}|SzakDolgozat.Api\\SzakDolgozat.Api.csproj|solutionrelative:szakdolgozat.api\\backgroundservices\\notificationbackgroundservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{DD43AB23-5E82-4C24-8E17-2EFA92467598}|SzakDolgozat.Api\\SzakDolgozat.Api.csproj|c:\\users\\tothb\\source\\repos\\szakdolgozat.api\\szakdolgozat.api\\controllers\\projectreportcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DD43AB23-5E82-4C24-8E17-2EFA92467598}|SzakDolgozat.Api\\SzakDolgozat.Api.csproj|solutionrelative:szakdolgozat.api\\controllers\\projectreportcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{13001D43-5862-4C67-B3D2-22F024FBE408}|C:\\Users\\tothb\\source\\repos\\Szakdolgozat\\SzakDolgozat.Client|C:\\Users\\tothb\\source\\repos\\Szakdolgozat\\szakdolgozat.client\\src\\app\\settings\\notification-settings\\notification-settings.component.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
+      "RelativeMoniker": "D:0:0:{13001D43-5862-4C67-B3D2-22F024FBE408}|C:\\Users\\tothb\\source\\repos\\Szakdolgozat\\SzakDolgozat.Client|solutionrelative:szakdolgozat.client\\src\\app\\settings\\notification-settings\\notification-settings.component.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{8C23CF72-A0F1-49D7-8476-70A371C60360}|C:\\Users\\tothb\\source\\repos\\SzakDolgozat.Api\\SzakDolgozat.Client|C:\\Users\\tothb\\source\\repos\\SzakDolgozat.Api\\SzakDolgozat.Client\\src\\app\\app.config.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
-      "RelativeMoniker": "D:0:0:{8C23CF72-A0F1-49D7-8476-70A371C60360}|C:\\Users\\tothb\\source\\repos\\SzakDolgozat.Api\\SzakDolgozat.Client|solutionrelative:SzakDolgozat.Client\\src\\app\\app.config.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
+      "AbsoluteMoniker": "D:0:0:{13001D43-5862-4C67-B3D2-22F024FBE408}|C:\\Users\\tothb\\source\\repos\\Szakdolgozat\\SzakDolgozat.Client|C:\\Users\\tothb\\source\\repos\\Szakdolgozat\\szakdolgozat.client\\src\\app\\services\\notification.service.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
+      "RelativeMoniker": "D:0:0:{13001D43-5862-4C67-B3D2-22F024FBE408}|C:\\Users\\tothb\\source\\repos\\Szakdolgozat\\SzakDolgozat.Client|solutionrelative:szakdolgozat.client\\src\\app\\services\\notification.service.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{DD43AB23-5E82-4C24-8E17-2EFA92467598}|SzakDolgozat.Api\\SzakDolgozat.Api.csproj|c:\\users\\tothb\\source\\repos\\szakdolgozat.api\\szakdolgozat.api\\models\\projectreport.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DD43AB23-5E82-4C24-8E17-2EFA92467598}|SzakDolgozat.Api\\SzakDolgozat.Api.csproj|solutionrelative:szakdolgozat.api\\models\\projectreport.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{DD43AB23-5E82-4C24-8E17-2EFA92467598}|SzakDolgozat.Api\\SzakDolgozat.Api.csproj|c:\\users\\tothb\\source\\repos\\szakdolgozat\\szakdolgozat.api\\migrations\\20250225083634_addnotifications.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DD43AB23-5E82-4C24-8E17-2EFA92467598}|SzakDolgozat.Api\\SzakDolgozat.Api.csproj|solutionrelative:szakdolgozat.api\\migrations\\20250225083634_addnotifications.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{13001D43-5862-4C67-B3D2-22F024FBE408}|C:\\Users\\tothb\\source\\repos\\Szakdolgozat\\SzakDolgozat.Client|C:\\Users\\tothb\\source\\repos\\Szakdolgozat\\szakdolgozat.client\\src\\app\\notifications\\notifications.component.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
+      "RelativeMoniker": "D:0:0:{13001D43-5862-4C67-B3D2-22F024FBE408}|C:\\Users\\tothb\\source\\repos\\Szakdolgozat\\SzakDolgozat.Client|solutionrelative:szakdolgozat.client\\src\\app\\notifications\\notifications.component.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{13001D43-5862-4C67-B3D2-22F024FBE408}|C:\\Users\\tothb\\source\\repos\\Szakdolgozat\\SzakDolgozat.Client|C:\\Users\\tothb\\source\\repos\\Szakdolgozat\\szakdolgozat.client\\src\\app\\notifications\\notification-dropdown\\notification-dropdown.component.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
+      "RelativeMoniker": "D:0:0:{13001D43-5862-4C67-B3D2-22F024FBE408}|C:\\Users\\tothb\\source\\repos\\Szakdolgozat\\SzakDolgozat.Client|solutionrelative:szakdolgozat.client\\src\\app\\notifications\\notification-dropdown\\notification-dropdown.component.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{13001D43-5862-4C67-B3D2-22F024FBE408}|C:\\Users\\tothb\\source\\repos\\Szakdolgozat\\SzakDolgozat.Client|C:\\Users\\tothb\\source\\repos\\Szakdolgozat\\szakdolgozat.client\\src\\app\\navbar\\navbar.component.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
+      "RelativeMoniker": "D:0:0:{13001D43-5862-4C67-B3D2-22F024FBE408}|C:\\Users\\tothb\\source\\repos\\Szakdolgozat\\SzakDolgozat.Client|solutionrelative:szakdolgozat.client\\src\\app\\navbar\\navbar.component.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{13001D43-5862-4C67-B3D2-22F024FBE408}|C:\\Users\\tothb\\source\\repos\\Szakdolgozat\\SzakDolgozat.Client|C:\\Users\\tothb\\source\\repos\\Szakdolgozat\\szakdolgozat.client\\src\\app\\app.routes.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
+      "RelativeMoniker": "D:0:0:{13001D43-5862-4C67-B3D2-22F024FBE408}|C:\\Users\\tothb\\source\\repos\\Szakdolgozat\\SzakDolgozat.Client|solutionrelative:szakdolgozat.client\\src\\app\\app.routes.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DD43AB23-5E82-4C24-8E17-2EFA92467598}|SzakDolgozat.Api\\SzakDolgozat.Api.csproj|c:\\users\\tothb\\source\\repos\\szakdolgozat\\szakdolgozat.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DD43AB23-5E82-4C24-8E17-2EFA92467598}|SzakDolgozat.Api\\SzakDolgozat.Api.csproj|solutionrelative:szakdolgozat.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{13001D43-5862-4C67-B3D2-22F024FBE408}|C:\\Users\\tothb\\source\\repos\\Szakdolgozat\\SzakDolgozat.Client|C:\\Users\\tothb\\source\\repos\\Szakdolgozat\\szakdolgozat.client\\src\\app\\settings\\settings.component.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
+      "RelativeMoniker": "D:0:0:{13001D43-5862-4C67-B3D2-22F024FBE408}|C:\\Users\\tothb\\source\\repos\\Szakdolgozat\\SzakDolgozat.Client|solutionrelative:szakdolgozat.client\\src\\app\\settings\\settings.component.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
     }
   ],
   "DocumentGroupContainers": [
@@ -58,162 +66,200 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 0,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Notification.cs",
+              "DocumentMoniker": "C:\\Users\\tothb\\source\\repos\\Szakdolgozat\\SzakDolgozat.Api\\Models\\Notification.cs",
+              "RelativeDocumentMoniker": "SzakDolgozat.Api\\Models\\Notification.cs",
+              "ToolTip": "C:\\Users\\tothb\\source\\repos\\Szakdolgozat\\SzakDolgozat.Api\\Models\\Notification.cs",
+              "RelativeToolTip": "SzakDolgozat.Api\\Models\\Notification.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-24T22:25:42.265Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "ApplicationDbContext.cs",
+              "DocumentMoniker": "C:\\Users\\tothb\\source\\repos\\Szakdolgozat\\SzakDolgozat.Api\\Data\\ApplicationDbContext.cs",
+              "RelativeDocumentMoniker": "SzakDolgozat.Api\\Data\\ApplicationDbContext.cs",
+              "ToolTip": "C:\\Users\\tothb\\source\\repos\\Szakdolgozat\\SzakDolgozat.Api\\Data\\ApplicationDbContext.cs",
+              "RelativeToolTip": "SzakDolgozat.Api\\Data\\ApplicationDbContext.cs",
+              "ViewState": "AgIAABkAAAAAAAAAAADwvzMAAAAyAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-24T22:26:47.438Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "NotificationService.cs",
+              "DocumentMoniker": "C:\\Users\\tothb\\source\\repos\\Szakdolgozat\\SzakDolgozat.Api\\Services\\NotificationService.cs",
+              "RelativeDocumentMoniker": "SzakDolgozat.Api\\Services\\NotificationService.cs",
+              "ToolTip": "C:\\Users\\tothb\\source\\repos\\Szakdolgozat\\SzakDolgozat.Api\\Services\\NotificationService.cs",
+              "RelativeToolTip": "SzakDolgozat.Api\\Services\\NotificationService.cs",
+              "ViewState": "AgIAAM0AAAAAAAAAAAAwwHYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-24T22:35:57.578Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "NotificationBackgroundService.cs",
+              "DocumentMoniker": "C:\\Users\\tothb\\source\\repos\\Szakdolgozat\\SzakDolgozat.Api\\BackgroundServices\\NotificationBackgroundService.cs",
+              "RelativeDocumentMoniker": "SzakDolgozat.Api\\BackgroundServices\\NotificationBackgroundService.cs",
+              "ToolTip": "C:\\Users\\tothb\\source\\repos\\Szakdolgozat\\SzakDolgozat.Api\\BackgroundServices\\NotificationBackgroundService.cs",
+              "RelativeToolTip": "SzakDolgozat.Api\\BackgroundServices\\NotificationBackgroundService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-24T22:29:26.879Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "NotificationController.cs",
+              "DocumentMoniker": "C:\\Users\\tothb\\source\\repos\\Szakdolgozat\\SzakDolgozat.Api\\Controllers\\NotificationController.cs",
+              "RelativeDocumentMoniker": "SzakDolgozat.Api\\Controllers\\NotificationController.cs",
+              "ToolTip": "C:\\Users\\tothb\\source\\repos\\Szakdolgozat\\SzakDolgozat.Api\\Controllers\\NotificationController.cs",
+              "RelativeToolTip": "SzakDolgozat.Api\\Controllers\\NotificationController.cs",
+              "ViewState": "AgIAAK0AAAAAAAAAAAAwwMIAAABLAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-24T22:37:18.491Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\tothb\\source\\repos\\Szakdolgozat\\SzakDolgozat.Api\\Program.cs",
+              "RelativeDocumentMoniker": "SzakDolgozat.Api\\Program.cs",
+              "ToolTip": "C:\\Users\\tothb\\source\\repos\\Szakdolgozat\\SzakDolgozat.Api\\Program.cs",
+              "RelativeToolTip": "SzakDolgozat.Api\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAqAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-24T22:29:44.864Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "notification.service.ts",
+              "DocumentMoniker": "C:\\Users\\tothb\\source\\repos\\Szakdolgozat\\SzakDolgozat.Client\\src\\app\\services\\notification.service.ts",
+              "RelativeDocumentMoniker": "SzakDolgozat.Client\\src\\app\\services\\notification.service.ts",
+              "ToolTip": "C:\\Users\\tothb\\source\\repos\\Szakdolgozat\\SzakDolgozat.Client\\src\\app\\services\\notification.service.ts",
+              "RelativeToolTip": "SzakDolgozat.Client\\src\\app\\services\\notification.service.ts",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABsAAAAkAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
+              "WhenOpened": "2025-02-24T22:38:53.818Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "calendar.component.ts",
-              "DocumentMoniker": "C:\\Users\\tothb\\source\\repos\\SzakDolgozat.Api\\SzakDolgozat.Client\\src\\app\\calendar\\calendar.component.ts",
-              "RelativeDocumentMoniker": "SzakDolgozat.Client\\src\\app\\calendar\\calendar.component.ts",
-              "ToolTip": "C:\\Users\\tothb\\source\\repos\\SzakDolgozat.Api\\SzakDolgozat.Client\\src\\app\\calendar\\calendar.component.ts",
-              "RelativeToolTip": "SzakDolgozat.Client\\src\\app\\calendar\\calendar.component.ts",
-              "ViewState": "AgIAALMAAAAAAAAAAAAQwMgAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
-              "WhenOpened": "2025-01-30T13:06:32.213Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "user-management.component.ts",
-              "DocumentMoniker": "C:\\Users\\tothb\\source\\repos\\SzakDolgozat.Api\\SzakDolgozat.Client\\src\\app\\settings\\user-management\\user-management.component.ts",
-              "RelativeDocumentMoniker": "SzakDolgozat.Client\\src\\app\\settings\\user-management\\user-management.component.ts",
-              "ToolTip": "C:\\Users\\tothb\\source\\repos\\SzakDolgozat.Api\\SzakDolgozat.Client\\src\\app\\settings\\user-management\\user-management.component.ts",
-              "RelativeToolTip": "SzakDolgozat.Client\\src\\app\\settings\\user-management\\user-management.component.ts",
-              "ViewState": "AgIAALgAAAAAAAAAAAAQwNsAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
-              "WhenOpened": "2025-01-30T12:57:34.721Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "UserController.cs",
-              "DocumentMoniker": "C:\\Users\\tothb\\source\\repos\\SzakDolgozat.Api\\SzakDolgozat.Api\\Controllers\\UserController.cs",
-              "RelativeDocumentMoniker": "SzakDolgozat.Api\\Controllers\\UserController.cs",
-              "ToolTip": "C:\\Users\\tothb\\source\\repos\\SzakDolgozat.Api\\SzakDolgozat.Api\\Controllers\\UserController.cs",
-              "RelativeToolTip": "SzakDolgozat.Api\\Controllers\\UserController.cs",
-              "ViewState": "AgIAAJgAAAAAAAAAAAAYwL0AAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-30T12:56:37.092Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "user.service.ts",
-              "DocumentMoniker": "C:\\Users\\tothb\\source\\repos\\SzakDolgozat.Api\\SzakDolgozat.Client\\src\\app\\services\\user.service.ts",
-              "RelativeDocumentMoniker": "SzakDolgozat.Client\\src\\app\\services\\user.service.ts",
-              "ToolTip": "C:\\Users\\tothb\\source\\repos\\SzakDolgozat.Api\\SzakDolgozat.Client\\src\\app\\services\\user.service.ts",
-              "RelativeToolTip": "SzakDolgozat.Client\\src\\app\\services\\user.service.ts",
-              "ViewState": "AgIAABAAAAAAAAAAAAAAADwAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
-              "WhenOpened": "2025-01-30T12:56:13.106Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 5,
-              "Title": "project-document.service.ts",
-              "DocumentMoniker": "C:\\Users\\tothb\\source\\repos\\SzakDolgozat.Api\\SzakDolgozat.Client\\src\\app\\services\\project-document.service.ts",
-              "RelativeDocumentMoniker": "SzakDolgozat.Client\\src\\app\\services\\project-document.service.ts",
-              "ToolTip": "C:\\Users\\tothb\\source\\repos\\SzakDolgozat.Api\\SzakDolgozat.Client\\src\\app\\services\\project-document.service.ts",
-              "RelativeToolTip": "SzakDolgozat.Client\\src\\app\\services\\project-document.service.ts",
-              "ViewState": "AgIAAAsAAAAAAAAAAAAAwC8AAAAAAAAAAAAAAA==",
+              "Title": "notification-settings.component.ts",
+              "DocumentMoniker": "C:\\Users\\tothb\\source\\repos\\Szakdolgozat\\SzakDolgozat.Client\\src\\app\\settings\\notification-settings\\notification-settings.component.ts",
+              "RelativeDocumentMoniker": "SzakDolgozat.Client\\src\\app\\settings\\notification-settings\\notification-settings.component.ts",
+              "ToolTip": "C:\\Users\\tothb\\source\\repos\\Szakdolgozat\\SzakDolgozat.Client\\src\\app\\settings\\notification-settings\\notification-settings.component.ts",
+              "RelativeToolTip": "SzakDolgozat.Client\\src\\app\\settings\\notification-settings\\notification-settings.component.ts",
+              "ViewState": "AgIAAJYAAAAAAAAAAAAowPsAAAAEAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
-              "WhenOpened": "2025-01-30T12:28:21.652Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "project-details-dialog.component.ts",
-              "DocumentMoniker": "C:\\Users\\tothb\\source\\repos\\SzakDolgozat.Api\\SzakDolgozat.Client\\src\\app\\projects\\project-details-dialog\\project-details-dialog.component.ts",
-              "RelativeDocumentMoniker": "SzakDolgozat.Client\\src\\app\\projects\\project-details-dialog\\project-details-dialog.component.ts",
-              "ToolTip": "C:\\Users\\tothb\\source\\repos\\SzakDolgozat.Api\\SzakDolgozat.Client\\src\\app\\projects\\project-details-dialog\\project-details-dialog.component.ts",
-              "RelativeToolTip": "SzakDolgozat.Client\\src\\app\\projects\\project-details-dialog\\project-details-dialog.component.ts",
-              "ViewState": "AgIAADAAAAAAAAAAAAAAABQAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
-              "WhenOpened": "2024-11-20T16:42:09.149Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "project-report.service.ts",
-              "DocumentMoniker": "C:\\Users\\tothb\\source\\repos\\SzakDolgozat.Api\\SzakDolgozat.Client\\src\\app\\services\\project-report.service.ts",
-              "RelativeDocumentMoniker": "SzakDolgozat.Client\\src\\app\\services\\project-report.service.ts",
-              "ToolTip": "C:\\Users\\tothb\\source\\repos\\SzakDolgozat.Api\\SzakDolgozat.Client\\src\\app\\services\\project-report.service.ts",
-              "RelativeToolTip": "SzakDolgozat.Client\\src\\app\\services\\project-report.service.ts",
-              "ViewState": "AgIAAAoAAAAAAAAAAAAqwA4AAAAEAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
-              "WhenOpened": "2024-11-20T16:41:49.629Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "ProjectReportController.cs",
-              "DocumentMoniker": "C:\\Users\\tothb\\source\\repos\\SzakDolgozat.Api\\SzakDolgozat.Api\\Controllers\\ProjectReportController.cs",
-              "RelativeDocumentMoniker": "SzakDolgozat.Api\\Controllers\\ProjectReportController.cs",
-              "ToolTip": "C:\\Users\\tothb\\source\\repos\\SzakDolgozat.Api\\SzakDolgozat.Api\\Controllers\\ProjectReportController.cs",
-              "RelativeToolTip": "SzakDolgozat.Api\\Controllers\\ProjectReportController.cs",
-              "ViewState": "AgIAAD4AAAAAAAAAAAAgwFcAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-20T16:40:56.099Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "app.config.ts",
-              "DocumentMoniker": "C:\\Users\\tothb\\source\\repos\\SzakDolgozat.Api\\SzakDolgozat.Client\\src\\app\\app.config.ts",
-              "RelativeDocumentMoniker": "SzakDolgozat.Client\\src\\app\\app.config.ts",
-              "ToolTip": "C:\\Users\\tothb\\source\\repos\\SzakDolgozat.Api\\SzakDolgozat.Client\\src\\app\\app.config.ts",
-              "RelativeToolTip": "SzakDolgozat.Client\\src\\app\\app.config.ts",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABkAAAAYAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
-              "WhenOpened": "2024-11-20T17:40:34.652Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "ProjectReport.cs",
-              "DocumentMoniker": "C:\\Users\\tothb\\source\\repos\\SzakDolgozat.Api\\SzakDolgozat.Api\\Models\\ProjectReport.cs",
-              "RelativeDocumentMoniker": "SzakDolgozat.Api\\Models\\ProjectReport.cs",
-              "ToolTip": "C:\\Users\\tothb\\source\\repos\\SzakDolgozat.Api\\SzakDolgozat.Api\\Models\\ProjectReport.cs",
-              "RelativeToolTip": "SzakDolgozat.Api\\Models\\ProjectReport.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-20T16:37:09.986Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "ApplicationDbContext.cs",
-              "DocumentMoniker": "C:\\Users\\tothb\\source\\repos\\SzakDolgozat.Api\\SzakDolgozat.Api\\Data\\ApplicationDbContext.cs",
-              "RelativeDocumentMoniker": "SzakDolgozat.Api\\Data\\ApplicationDbContext.cs",
-              "ToolTip": "C:\\Users\\tothb\\source\\repos\\SzakDolgozat.Api\\SzakDolgozat.Api\\Data\\ApplicationDbContext.cs",
-              "RelativeToolTip": "SzakDolgozat.Api\\Data\\ApplicationDbContext.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAABEAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-20T16:32:51.08Z",
+              "WhenOpened": "2025-02-24T22:48:12.668Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 7,
-              "Title": "app.config.ts.template",
-              "DocumentMoniker": "C:\\Users\\tothb\\source\\repos\\SzakDolgozat.Api\\SzakDolgozat.Client\\node_modules\\@schematics\\angular\\application\\files\\standalone-files\\src\\app\\app.config.ts.template",
-              "RelativeDocumentMoniker": "SzakDolgozat.Client\\node_modules\\@schematics\\angular\\application\\files\\standalone-files\\src\\app\\app.config.ts.template",
-              "ToolTip": "C:\\Users\\tothb\\source\\repos\\SzakDolgozat.Api\\SzakDolgozat.Client\\node_modules\\@schematics\\angular\\application\\files\\standalone-files\\src\\app\\app.config.ts.template",
-              "RelativeToolTip": "SzakDolgozat.Client\\node_modules\\@schematics\\angular\\application\\files\\standalone-files\\src\\app\\app.config.ts.template",
+              "Title": "20250225083634_AddNotifications.cs",
+              "DocumentMoniker": "C:\\Users\\tothb\\source\\repos\\Szakdolgozat\\SzakDolgozat.Api\\Migrations\\20250225083634_AddNotifications.cs",
+              "RelativeDocumentMoniker": "SzakDolgozat.Api\\Migrations\\20250225083634_AddNotifications.cs",
+              "ToolTip": "C:\\Users\\tothb\\source\\repos\\Szakdolgozat\\SzakDolgozat.Api\\Migrations\\20250225083634_AddNotifications.cs",
+              "RelativeToolTip": "SzakDolgozat.Api\\Migrations\\20250225083634_AddNotifications.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2024-11-20T17:40:33.026Z"
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-25T08:36:35.622Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "notifications.component.ts",
+              "DocumentMoniker": "C:\\Users\\tothb\\source\\repos\\Szakdolgozat\\SzakDolgozat.Client\\src\\app\\notifications\\notifications.component.ts",
+              "RelativeDocumentMoniker": "SzakDolgozat.Client\\src\\app\\notifications\\notifications.component.ts",
+              "ToolTip": "C:\\Users\\tothb\\source\\repos\\Szakdolgozat\\SzakDolgozat.Client\\src\\app\\notifications\\notifications.component.ts",
+              "RelativeToolTip": "SzakDolgozat.Client\\src\\app\\notifications\\notifications.component.ts",
+              "ViewState": "AgIAAHMBAAAAAAAAAAAqwI0BAAAYAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
+              "WhenOpened": "2025-02-24T22:45:13.228Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "notification-dropdown.component.ts",
+              "DocumentMoniker": "C:\\Users\\tothb\\source\\repos\\Szakdolgozat\\SzakDolgozat.Client\\src\\app\\notifications\\notification-dropdown\\notification-dropdown.component.ts",
+              "RelativeDocumentMoniker": "SzakDolgozat.Client\\src\\app\\notifications\\notification-dropdown\\notification-dropdown.component.ts",
+              "ToolTip": "C:\\Users\\tothb\\source\\repos\\Szakdolgozat\\SzakDolgozat.Client\\src\\app\\notifications\\notification-dropdown\\notification-dropdown.component.ts",
+              "RelativeToolTip": "SzakDolgozat.Client\\src\\app\\notifications\\notification-dropdown\\notification-dropdown.component.ts",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAATAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
+              "WhenOpened": "2025-02-25T08:13:46.51Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "navbar.component.ts",
+              "DocumentMoniker": "C:\\Users\\tothb\\source\\repos\\Szakdolgozat\\SzakDolgozat.Client\\src\\app\\navbar\\navbar.component.ts",
+              "RelativeDocumentMoniker": "SzakDolgozat.Client\\src\\app\\navbar\\navbar.component.ts",
+              "ToolTip": "C:\\Users\\tothb\\source\\repos\\Szakdolgozat\\SzakDolgozat.Client\\src\\app\\navbar\\navbar.component.ts",
+              "RelativeToolTip": "SzakDolgozat.Client\\src\\app\\navbar\\navbar.component.ts",
+              "ViewState": "AgIAACgAAAAAAAAAAAAuwEsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
+              "WhenOpened": "2025-02-24T22:49:11.307Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "app.routes.ts",
+              "DocumentMoniker": "C:\\Users\\tothb\\source\\repos\\Szakdolgozat\\SzakDolgozat.Client\\src\\app\\app.routes.ts",
+              "RelativeDocumentMoniker": "SzakDolgozat.Client\\src\\app\\app.routes.ts",
+              "ToolTip": "C:\\Users\\tothb\\source\\repos\\Szakdolgozat\\SzakDolgozat.Client\\src\\app\\app.routes.ts",
+              "RelativeToolTip": "SzakDolgozat.Client\\src\\app\\app.routes.ts",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
+              "WhenOpened": "2025-02-24T22:50:15.813Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "settings.component.ts",
+              "DocumentMoniker": "C:\\Users\\tothb\\source\\repos\\Szakdolgozat\\SzakDolgozat.Client\\src\\app\\settings\\settings.component.ts",
+              "RelativeDocumentMoniker": "SzakDolgozat.Client\\src\\app\\settings\\settings.component.ts",
+              "ToolTip": "C:\\Users\\tothb\\source\\repos\\Szakdolgozat\\SzakDolgozat.Client\\src\\app\\settings\\settings.component.ts",
+              "RelativeToolTip": "SzakDolgozat.Client\\src\\app\\settings\\settings.component.ts",
+              "ViewState": "AgIAAFMAAAAAAAAAAAAIwHEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
+              "WhenOpened": "2025-02-24T22:48:40.491Z",
+              "EditorCaption": ""
             }
           ]
         }

@@ -6,6 +6,7 @@ using SzakDolgozat.Api.Models;
 using Microsoft.AspNetCore.Identity;
 using System.Security.Claims;
 using SzakDolgozat.Api.DTOs;
+using System.Text.Json;
 
 namespace SzakDolgozat.Api.Controllers
 {
@@ -28,9 +29,8 @@ namespace SzakDolgozat.Api.Controllers
             _logger = logger;
         }
 
-
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Project>>> GetProjects()
+        public async Task<ActionResult<IEnumerable<ProjectResponseDto>>> GetProjects()
         {
             try
             {
@@ -42,26 +42,43 @@ namespace SzakDolgozat.Api.Controllers
                     return Unauthorized();
                 }
 
-                var projects = await _context.Projects.Include(p => p.User).ToListAsync();
+                var projects = await _context.Projects
+                    .Include(p => p.User)
+                    .Include(p => p.ProjectUsers)
+                        .ThenInclude(pu => pu.User)
+                    .AsNoTracking()
+                    .ToListAsync();
 
-                // Admin lát mindent
-                if (user.Role == (int)UserRole.Admin)
+                var projectDtos = projects.Select(p => new ProjectResponseDto
                 {
-                    return Ok(projects);
-                }
+                    Id = p.Id,
+                    Name = p.Name,
+                    ProjectManager = p.ProjectManager,
+                    StartDate = p.StartDate,
+                    PlannedEndDate = p.PlannedEndDate,
+                    Description = p.Description,
+                    Repository = p.Repository,
+                    IsActive = p.IsActive,
+                    UserId = p.UserId,
+                    CreatedById = p.CreatedById,
+                    AssignedUsers = p.ProjectUsers.Select(pu => new UserDto
+                    {
+                        Id = pu.User.Id,
+                        UserName = pu.User.UserName,
+                        Email = pu.User.Email
+                    }).ToList()
+                });
 
-                // Developer csak a saját és aktív projektjeit látja
                 if (user.Role == (int)UserRole.Developer)
                 {
-                    projects = projects.Where(p => p.UserId == userId || p.IsActive).ToList();
+                    projectDtos = projectDtos.Where(p => p.UserId == userId || p.IsActive);
                 }
-                // Reader csak az aktív projekteket látja
                 else if (user.Role == (int)UserRole.Reader)
                 {
-                    projects = projects.Where(p => p.IsActive).ToList();
+                    projectDtos = projectDtos.Where(p => p.IsActive);
                 }
 
-                return Ok(projects);
+                return Ok(projectDtos.ToList());
             }
             catch (Exception ex)
             {
@@ -69,12 +86,16 @@ namespace SzakDolgozat.Api.Controllers
                 return StatusCode(500, $"Internal server error: {ex.Message}");
             }
         }
+
         [HttpPost]
         public async Task<ActionResult<Project>> CreateProject(CreateProjectDto projectDto)
         {
             try
             {
                 var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+                _logger.LogInformation($"Creating project with userId: {userId}");
+                _logger.LogInformation($"Project data: {JsonSerializer.Serialize(projectDto)}");
+
                 var user = await _userManager.FindByIdAsync(userId);
 
                 if (user == null)
@@ -103,22 +124,16 @@ namespace SzakDolgozat.Api.Controllers
                     UserId = userId,
                     IsActive = true,
                     CreatedById = userId,
-                    ProjectUsers = projectDto.ProjectUsers.Select(pu => new ProjectUser
+                    ProjectUsers = projectDto.ProjectUsers?.Select(pu => new ProjectUser
                     {
                         UserId = pu.UserId
-                    }).ToList()
+                    }).ToList() ?? new List<ProjectUser>()
                 };
 
                 _context.Projects.Add(project);
                 await _context.SaveChangesAsync();
 
-                await _context.Entry(project)
-                    .Reference(p => p.User)
-                    .LoadAsync();
-
-                await _context.Entry(project)
-                    .Collection(p => p.ProjectUsers)
-                    .LoadAsync();
+                _logger.LogInformation($"Project created successfully with ID: {project.Id}");
 
                 return CreatedAtAction(nameof(GetProject), new { id = project.Id }, project);
             }
@@ -128,6 +143,7 @@ namespace SzakDolgozat.Api.Controllers
                 return StatusCode(500, new { message = ex.Message });
             }
         }
+
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdateProject(int id, UpdateProjectDto projectDto)
         {
@@ -198,6 +214,8 @@ namespace SzakDolgozat.Api.Controllers
                 var user = await _userManager.FindByIdAsync(userId);
                 var project = await _context.Projects
                     .Include(p => p.User)
+                    .Include(p => p.ProjectUsers)
+                        .ThenInclude(pu => pu.User)
                     .FirstOrDefaultAsync(p => p.Id == id);
 
                 if (project == null)

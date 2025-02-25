@@ -8,17 +8,16 @@ import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
-import { Project } from '../../services/project.service';
-import { AuthService } from '../../auth.service';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatSelectModule } from '@angular/material/select';
-import { UserService, User } from '../../services/user.service';
-import { ProjectReport, ProjectReportService } from '../../services/project-report.service';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatListModule } from '@angular/material/list';
-import { ProjectDocumentService, ProjectDocument } from '../../services/project-document.service';
 import { MatTooltipModule } from '@angular/material/tooltip';
-
+import { UserService, User } from '../../services/user.service';
+import { Project, ProjectUser } from '../../services/project.service';
+import { ProjectReport, ProjectReportService } from '../../services/project-report.service';
+import { ProjectDocument, ProjectDocumentService } from '../../services/project-document.service';
+import { AuthService } from '../../auth.service';
 
 @Component({
   selector: 'app-project-details-dialog',
@@ -37,7 +36,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     MatSelectModule,
     MatExpansionModule,
     MatListModule,
-    MatTooltipModule 
+    MatTooltipModule
   ],
   template: `
    <div class="dialog-container">
@@ -55,19 +54,32 @@ import { MatTooltipModule } from '@angular/material/tooltip';
            <input matInput [(ngModel)]="data.projectManager" [readonly]="!canEdit">
          </mat-form-field>
 
-         <div class="date-container">
-           <mat-form-field appearance="outline">
+         <!-- Dátum és idő mezők -->
+         <div class="date-time-section">
+           <mat-form-field appearance="outline" class="date-field">
              <mat-label>Start Date</mat-label>
-             <input matInput [matDatepicker]="startPicker" [(ngModel)]="data.startDate" [readonly]="!canEdit">
+             <input matInput [matDatepicker]="startPicker" [(ngModel)]="startDate" [readonly]="!canEdit">
              <mat-datepicker-toggle matIconSuffix [for]="startPicker" [disabled]="!canEdit"></mat-datepicker-toggle>
              <mat-datepicker #startPicker></mat-datepicker>
            </mat-form-field>
 
-           <mat-form-field appearance="outline">
+           <mat-form-field appearance="outline" class="time-field">
+             <mat-label>Start Time</mat-label>
+             <input matInput type="time" [(ngModel)]="startTime" [readonly]="!canEdit">
+           </mat-form-field>
+         </div>
+
+         <div class="date-time-section">
+           <mat-form-field appearance="outline" class="date-field">
              <mat-label>Planned End Date</mat-label>
-             <input matInput [matDatepicker]="endPicker" [(ngModel)]="data.plannedEndDate" [readonly]="!canEdit">
+             <input matInput [matDatepicker]="endPicker" [(ngModel)]="endDate" [readonly]="!canEdit">
              <mat-datepicker-toggle matIconSuffix [for]="endPicker" [disabled]="!canEdit"></mat-datepicker-toggle>
              <mat-datepicker #endPicker></mat-datepicker>
+           </mat-form-field>
+
+           <mat-form-field appearance="outline" class="time-field">
+             <mat-label>End Time</mat-label>
+             <input matInput type="time" [(ngModel)]="endTime" [readonly]="!canEdit">
            </mat-form-field>
          </div>
 
@@ -93,15 +105,17 @@ import { MatTooltipModule } from '@angular/material/tooltip';
            </mat-select>
          </mat-form-field>
 
-         <div class="assigned-users" *ngIf="data.assignedUsers?.length">
-           <h4>Assigned Users:</h4>
-           <mat-chip-listbox>
-             <mat-chip *ngFor="let user of data.assignedUsers" [removable]="canEdit" (removed)="removeUser(user)">
-               {{user.email}}
-               <mat-icon matChipRemove *ngIf="canEdit">cancel</mat-icon>
-             </mat-chip>
-           </mat-chip-listbox>
-         </div>
+        <div class="assigned-users" *ngIf="data.assignedUsers?.length">
+            <h4>Assigned Users:</h4>
+            <mat-chip-listbox>
+                <mat-chip *ngFor="let user of data.assignedUsers"
+                          [removable]="canEdit"
+                          (removed)="removeUser(user)">
+                    {{user.email}}
+                    <mat-icon matChipRemove *ngIf="canEdit">cancel</mat-icon>
+                </mat-chip>
+            </mat-chip-listbox>
+        </div>
 
          <div class="status-section">
            <p>Current Status: 
@@ -249,12 +263,17 @@ import { MatTooltipModule } from '@angular/material/tooltip';
      width: 100%;
    }
 
-   .date-container {
+   .date-time-section {
      display: flex;
      gap: 16px;
+     margin-bottom: 15px;
    }
-
-   .date-container mat-form-field {
+   
+   .date-field {
+     flex: 3;
+   }
+   
+   .time-field {
      flex: 1;
    }
 
@@ -391,6 +410,11 @@ export class ProjectDetailsDialogComponent implements OnInit {
     reportType: 'Progress'
   };
 
+  startDate: Date = new Date();
+  startTime: string = '';
+  endDate: Date = new Date();
+  endTime: string = '';
+
   constructor(
     public dialogRef: MatDialogRef<ProjectDetailsDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: Project,
@@ -401,11 +425,137 @@ export class ProjectDetailsDialogComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    // Dátum és idő inicializálása
+    this.initializeDateTimeFields();
+
     this.loadReports();
     this.loadUsers();
     if (this.data.id) {
       this.loadDocuments();
     }
+  }
+
+  // Új metódus a dátum-idő mezők inicializálására
+  initializeDateTimeFields() {
+    console.log('Initializing date-time fields with data:', this.data);
+
+    if (this.data.startDate) {
+      // Biztosítjuk, hogy Date objektumunk van
+      const startDateTime = new Date(this.data.startDate);
+
+      // Csak dátum rész kinyerése (létrehozunk egy új Date objektumot az óra:perc nélkül)
+      this.startDate = new Date(
+        startDateTime.getFullYear(),
+        startDateTime.getMonth(),
+        startDateTime.getDate()
+      );
+
+      // Óra:perc kinyerése formázva
+      this.startTime = this.formatTimeFromDate(startDateTime);
+
+      console.log('Extracted startDate:', this.startDate);
+      console.log('Extracted startTime:', this.startTime);
+    }
+
+    if (this.data.plannedEndDate) {
+      // Biztosítjuk, hogy Date objektumunk van
+      const endDateTime = new Date(this.data.plannedEndDate);
+
+      // Csak dátum rész kinyerése (létrehozunk egy új Date objektumot az óra:perc nélkül)
+      this.endDate = new Date(
+        endDateTime.getFullYear(),
+        endDateTime.getMonth(),
+        endDateTime.getDate()
+      );
+
+      // Óra:perc kinyerése formázva
+      this.endTime = this.formatTimeFromDate(endDateTime);
+
+      console.log('Extracted endDate:', this.endDate);
+      console.log('Extracted endTime:', this.endTime);
+    }
+  }
+
+  // Segédfüggvény az idő formázásához
+  formatTimeFromDate(date: Date): string {
+    return `${date.getHours().toString().padStart(2, '0')}:${date.getMinutes().toString().padStart(2, '0')}`;
+  }
+
+  // Új metódus az időzóna korrekciókhoz
+  fixTimeZoneIssues() {
+    if (this.data.startDate) {
+      // Ellenőrizzük, hogy string vagy Date objektum-e
+      if (typeof this.data.startDate === 'string') {
+        this.data.startDate = new Date(this.data.startDate);
+      }
+      // Korrigáljuk az időzóna eltérést ha szükséges
+      const currentOffset = this.data.startDate.getTimezoneOffset();
+      if (currentOffset !== 0) {
+        console.log('Korrigálás startDate időzóna eltérés:', currentOffset);
+        const correctedDate = new Date(this.data.startDate.getTime());
+        this.data.startDate = correctedDate;
+      }
+    }
+
+    if (this.data.plannedEndDate) {
+      // Ellenőrizzük, hogy string vagy Date objektum-e
+      if (typeof this.data.plannedEndDate === 'string') {
+        this.data.plannedEndDate = new Date(this.data.plannedEndDate);
+      }
+      // Korrigáljuk az időzóna eltérést ha szükséges
+      const currentOffset = this.data.plannedEndDate.getTimezoneOffset();
+      if (currentOffset !== 0) {
+        console.log('Korrigálás plannedEndDate időzóna eltérés:', currentOffset);
+        const correctedDate = new Date(this.data.plannedEndDate.getTime());
+        this.data.plannedEndDate = correctedDate;
+      }
+    }
+  }
+
+  extractDateAndTime() {
+    console.log('Extracting date and time from:', {
+      startDate: this.data.startDate,
+      endDate: this.data.plannedEndDate
+    });
+
+    if (this.data.startDate) {
+      const startDateTime = new Date(this.data.startDate);
+      this.startDate = new Date(
+        startDateTime.getFullYear(),
+        startDateTime.getMonth(),
+        startDateTime.getDate()
+      );
+      // Időpont kinyerése formázva
+      this.startTime = `${startDateTime.getHours().toString().padStart(2, '0')}:${startDateTime.getMinutes().toString().padStart(2, '0')}`;
+      console.log('Extracted start time:', this.startTime);
+    }
+
+    if (this.data.plannedEndDate) {
+      const endDateTime = new Date(this.data.plannedEndDate);
+      this.endDate = new Date(
+        endDateTime.getFullYear(),
+        endDateTime.getMonth(),
+        endDateTime.getDate()
+      );
+      // Időpont kinyerése formázva
+      this.endTime = `${endDateTime.getHours().toString().padStart(2, '0')}:${endDateTime.getMinutes().toString().padStart(2, '0')}`;
+      console.log('Extracted end time:', this.endTime);
+    }
+  }
+
+  formatTime(date: Date): string {
+    return date.getHours().toString().padStart(2, '0') + ':' +
+      date.getMinutes().toString().padStart(2, '0');
+  }
+
+  combineDateAndTime(date: Date, timeString: string): Date {
+    const dateOnly = new Date(date.getFullYear(), date.getMonth(), date.getDate());
+
+    const [hours, minutes] = timeString.split(':').map(Number);
+
+    dateOnly.setHours(hours, minutes, 0, 0);
+
+    return dateOnly;
   }
 
   loadUsers() {
@@ -426,7 +576,7 @@ export class ProjectDetailsDialogComponent implements OnInit {
       error: (error: Error) => console.error('Error loading documents:', error)
     });
   }
-  
+
   submitReport() {
     if (!this.newReport.title || !this.newReport.content || !this.data.id || !this.newReport.reportType) {
       return;
@@ -462,9 +612,9 @@ export class ProjectDetailsDialogComponent implements OnInit {
     });
   }
 
-  removeUser(user: User) {
+  removeUser(user: User | ProjectUser): void {
     if (this.data.assignedUsers) {
-      const index = this.data.assignedUsers.indexOf(user);
+      const index = this.data.assignedUsers.findIndex(u => u.id === user.id);
       if (index >= 0) {
         this.data.assignedUsers.splice(index, 1);
       }
@@ -517,8 +667,47 @@ export class ProjectDetailsDialogComponent implements OnInit {
   }
 
   saveChanges(): void {
-    console.log('Saving changes:', this.data);
-    this.dialogRef.close({ action: 'save', project: this.data });
+    try {
+      console.log('Before combining dates:');
+      console.log('Start Date:', this.startDate);
+      console.log('Start Time:', this.startTime);
+      console.log('End Date:', this.endDate);
+      console.log('End Time:', this.endTime);
+
+      // Egyszerű, robusztus dátum+idő kombináció
+      const combinedStartDateTime = this.createExactDateTime(this.startDate, this.startTime);
+      const combinedEndDateTime = this.createExactDateTime(this.endDate, this.endTime);
+
+      console.log('After combining dates:');
+      console.log('Combined Start DateTime:', combinedStartDateTime);
+      console.log('Combined End DateTime:', combinedEndDateTime);
+
+      this.data.startDate = combinedStartDateTime;
+      this.data.plannedEndDate = combinedEndDateTime;
+
+      console.log('Saving changes with combined dates:', this.data);
+      this.dialogRef.close({ action: 'save', project: this.data });
+    } catch (error) {
+      console.error('Error saving changes:', error);
+      alert('Hiba történt a módosítások mentésekor.');
+    }
+  }
+
+  // Új metódus a pontos dátum+idő létrehozásához
+  createExactDateTime(date: Date, timeString: string): Date {
+    // Feldolgozzuk a dátum és idő komponenseket
+    const year = date.getFullYear();
+    const month = date.getMonth();
+    const day = date.getDate();
+
+    // Feldolgozzuk az idő komponenseket
+    const [hours, minutes] = timeString.split(':').map(Number);
+
+    // Létrehozunk egy új dátumot a pontos időponttal
+    const result = new Date(year, month, day, hours, minutes, 0, 0);
+
+    console.log(`Created exact datetime: ${result.toLocaleString()} from ${date.toDateString()} and ${timeString}`);
+    return result;
   }
 
   close(): void {

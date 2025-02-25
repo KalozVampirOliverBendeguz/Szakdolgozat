@@ -47,19 +47,34 @@ import { UserService, User } from '../../services/user.service';
           <input matInput [(ngModel)]="project.projectManager" name="projectManager" required>
         </mat-form-field>
 
-        <mat-form-field appearance="fill" class="full-width">
-          <mat-label>Start Date</mat-label>
-          <input matInput [matDatepicker]="startPicker" [(ngModel)]="project.startDate" name="startDate" required>
-          <mat-datepicker-toggle matIconSuffix [for]="startPicker"></mat-datepicker-toggle>
-          <mat-datepicker #startPicker></mat-datepicker>
-        </mat-form-field>
+        <!-- Dátum és idő mezők -->
+        <div class="date-time-section">
+          <mat-form-field appearance="fill" class="date-field">
+            <mat-label>Start Date</mat-label>
+            <input matInput [matDatepicker]="startPicker" [(ngModel)]="startDate" name="startDate" required>
+            <mat-datepicker-toggle matIconSuffix [for]="startPicker"></mat-datepicker-toggle>
+            <mat-datepicker #startPicker></mat-datepicker>
+          </mat-form-field>
 
-        <mat-form-field appearance="fill" class="full-width">
-          <mat-label>Planned End Date</mat-label>
-          <input matInput [matDatepicker]="endPicker" [(ngModel)]="project.plannedEndDate" name="plannedEndDate" required>
-          <mat-datepicker-toggle matIconSuffix [for]="endPicker"></mat-datepicker-toggle>
-          <mat-datepicker #endPicker></mat-datepicker>
-        </mat-form-field>
+          <mat-form-field appearance="fill" class="time-field">
+            <mat-label>Start Time</mat-label>
+            <input matInput type="time" [(ngModel)]="startTime" name="startTime" required>
+          </mat-form-field>
+        </div>
+
+        <div class="date-time-section">
+          <mat-form-field appearance="fill" class="date-field">
+            <mat-label>Planned End Date</mat-label>
+            <input matInput [matDatepicker]="endPicker" [(ngModel)]="endDate" name="endDate" required>
+            <mat-datepicker-toggle matIconSuffix [for]="endPicker"></mat-datepicker-toggle>
+            <mat-datepicker #endPicker></mat-datepicker>
+          </mat-form-field>
+
+          <mat-form-field appearance="fill" class="time-field">
+            <mat-label>End Time</mat-label>
+            <input matInput type="time" [(ngModel)]="endTime" name="endTime" required>
+          </mat-form-field>
+        </div>
 
         <mat-form-field appearance="fill" class="full-width">
           <mat-label>Description</mat-label>
@@ -118,6 +133,17 @@ import { UserService, User } from '../../services/user.service';
       flex-wrap: wrap;
       gap: 8px;
     }
+    .date-time-section {
+      display: flex;
+      gap: 16px;
+      margin-bottom: 15px;
+    }
+    .date-field {
+      flex: 3;
+    }
+    .time-field {
+      flex: 1;
+    }
   `]
 })
 export class ProjectDialogComponent implements OnInit {
@@ -132,6 +158,12 @@ export class ProjectDialogComponent implements OnInit {
     assignedUsers: [] as User[]
   };
 
+  // Külön kezeljük a dátum és idő komponenseket
+  startDate: Date = new Date();
+  startTime: string = this.formatTime(new Date());
+  endDate: Date = new Date();
+  endTime: string = this.formatTime(new Date());
+
   availableUsers: User[] = [];
 
   constructor(
@@ -143,6 +175,10 @@ export class ProjectDialogComponent implements OnInit {
 
   ngOnInit() {
     this.loadUsers();
+  }
+
+  formatTime(date: Date): string {
+    return `${date.getHours().toString().padStart(2, '0')}:${date.getMinutes().toString().padStart(2, '0')}`;
   }
 
   loadUsers() {
@@ -171,18 +207,36 @@ export class ProjectDialogComponent implements OnInit {
       return;
     }
 
+    const combinedStartDateTime = this.combineDateAndTime(this.startDate, this.startTime);
+    const combinedEndDateTime = this.combineDateAndTime(this.endDate, this.endTime);
+
     const projectData = {
       name: this.project.name,
       projectManager: this.project.projectManager,
-      startDate: this.project.startDate.toISOString(),
-      plannedEndDate: this.project.plannedEndDate.toISOString(),
+      startDate: combinedStartDateTime,
+      plannedEndDate: combinedEndDateTime,
       description: this.project.description,
       repository: this.project.repository,
       assignedUsers: this.project.assignedUsers.map(user => user.id),
       createdById: userId
     };
 
-    console.log('Project data to submit:', JSON.stringify(projectData));
     this.dialogRef.close(projectData);
+  }
+
+  combineDateAndTime(date: Date, timeString: string): Date {
+    // Feldolgozzuk a dátum és idő komponenseket
+    const year = date.getFullYear();
+    const month = date.getMonth();
+    const day = date.getDate();
+
+    // Feldolgozzuk az idő komponenseket
+    const [hours, minutes] = timeString.split(':').map(Number);
+
+    // Létrehozunk egy új dátumot a pontos időponttal
+    const result = new Date(year, month, day, hours, minutes, 0, 0);
+
+    console.log(`Created exact datetime: ${result.toLocaleString()} from ${date.toDateString()} and ${timeString}`);
+    return result;
   }
 }
